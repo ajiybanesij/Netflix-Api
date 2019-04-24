@@ -15,9 +15,9 @@ namespace Netflix_Api.Controllers
         String URL = "https://www.netflix.com/tr/login";
 
 
-        [Route("GetHistory/{email}/{password}")]
+        [Route("GetHistory/{email}/{password}/{username}")]
         [HttpGet,HttpPost]
-        public async Task<IHttpActionResult> GetHistory(string email,string password)
+        public async Task<IHttpActionResult> GetHistory(string email,string password,string username)
         {
          
             var chromeOptions = new ChromeOptions();
@@ -37,7 +37,7 @@ namespace Netflix_Api.Controllers
             int index = 0;
             foreach (var item in all)
             {
-                if (item.Text.ToString().Equals("Nesij"))
+                if (item.Text.ToString().Equals("username"))
                 {
                     index = sayac;
                     Console.WriteLine(item.Text.ToString());
